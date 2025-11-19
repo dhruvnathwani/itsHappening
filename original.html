@@ -54,50 +54,35 @@
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     }
 
-    .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+    .featured-photos {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1400px;
+      margin: 0 auto;
     }
 
-    .photo-card {
-      position: relative;
+    .featured-photo {
+      flex: 1;
+      min-width: 300px;
+      max-width: 600px;
+      border-radius: 20px;
       overflow: hidden;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
-    .photo-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    .featured-photo:hover {
+      transform: scale(1.02);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
     }
 
-    .photo-card img {
+    .featured-photo img {
       width: 100%;
-      height: 400px;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .photo-card:hover img {
-      transform: scale(1.05);
-    }
-
-    .photo-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      color: white;
-      padding: 2rem 1.5rem 1.5rem;
-      transform: translateY(100%);
-      transition: transform 0.3s ease;
-    }
-
-    .photo-card:hover .photo-caption {
-      transform: translateY(0);
+      height: auto;
+      display: block;
     }
 
     .section-divider {
@@ -106,44 +91,13 @@
       margin: 4rem 0;
     }
 
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 50;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.9);
-    }
-
-    .modal-content {
-      margin: 5% auto;
-      display: block;
-      max-width: 90%;
-      max-height: 85vh;
-      object-fit: contain;
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 35px;
-      color: #fff;
-      font-size: 40px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: color 0.3s;
-    }
-
-    .modal-close:hover {
-      color: #667eea;
-    }
-
     @media (max-width: 768px) {
-      .photo-card img {
-        height: 300px;
+      .featured-photos {
+        flex-direction: column;
+      }
+
+      .featured-photo {
+        max-width: 100%;
       }
     }
   </style>
@@ -191,71 +145,23 @@
 
   <div class="section-divider"></div>
 
-  <!-- Photo Gallery Section -->
-  <section id="gallery" class="py-20 px-4 bg-gradient-to-b from-white to-gray-50">
+  <!-- Featured Photos Section -->
+  <section id="photos" class="py-20 px-4 bg-gradient-to-b from-white to-gray-50">
     <div class="container mx-auto max-w-7xl">
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4">Captured Memories</h2>
+        <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4">Captured Moments</h2>
         <p class="text-gray-600 text-lg max-w-2xl mx-auto">
-          A collection of beautiful moments that tell a story
+          Two beautiful moments frozen in time
         </p>
       </div>
 
-      <div class="photo-grid">
-        <!-- Photo 1 -->
-        <div class="photo-card">
-          <img src="photos/IMG_1232.jpg" alt="Memory 1" class="gallery-img cursor-pointer">
-          <div class="photo-caption">
-            <p class="text-sm font-medium">A perfect moment captured in time</p>
-          </div>
+      <div class="featured-photos">
+        <div class="featured-photo slide-up">
+          <img src="photos/DSCF0002.jpg" alt="Sonali Nathwani">
         </div>
 
-        <!-- Photo 2 -->
-        <div class="photo-card">
-          <img src="photos/IMG_0566.jpg" alt="Memory 2" class="gallery-img cursor-pointer">
-          <div class="photo-caption">
-            <p class="text-sm font-medium">Radiance and grace</p>
-          </div>
-        </div>
-
-        <!-- Photo 3 -->
-        <div class="photo-card">
-          <img src="photos/C869443D-5D3E-4969-873E-B0FAFD1E6167.JPG" alt="Memory 3" class="gallery-img cursor-pointer">
-          <div class="photo-caption">
-            <p class="text-sm font-medium">Pure joy</p>
-          </div>
-        </div>
-
-        <!-- Photo 4 -->
-        <div class="photo-card">
-          <img src="photos/IMG_4225.JPG" alt="Memory 4" class="gallery-img cursor-pointer">
-          <div class="photo-caption">
-            <p class="text-sm font-medium">The moment I knew I was moving to Austin</p>
-          </div>
-        </div>
-
-        <!-- Photo 5 -->
-        <div class="photo-card">
-          <img src="photos/IMG_1543.jpg" alt="Memory 5" class="gallery-img cursor-pointer">
-          <div class="photo-caption">
-            <p class="text-sm font-medium">Our first Diwali celebration together</p>
-          </div>
-        </div>
-
-        <!-- Photo 6 -->
-        <div class="photo-card">
-          <img src="photos/IMG_3070.JPG" alt="Memory 6" class="gallery-img cursor-pointer">
-          <div class="photo-caption">
-            <p class="text-sm font-medium">Coachella - officially together</p>
-          </div>
-        </div>
-
-        <!-- Photo 7 -->
-        <div class="photo-card">
-          <img src="photos/IMG_3784.JPG" alt="Memory 7" class="gallery-img cursor-pointer">
-          <div class="photo-caption">
-            <p class="text-sm font-medium">Your smile lights up my world</p>
-          </div>
+        <div class="featured-photo slide-up" style="animation-delay: 0.2s;">
+          <img src="photos/IMG_5919.JPG" alt="Sonali Nathwani">
         </div>
       </div>
     </div>
@@ -273,12 +179,6 @@
     </div>
   </footer>
 
-  <!-- Lightbox Modal -->
-  <div id="lightboxModal" class="modal">
-    <span class="modal-close">&times;</span>
-    <img id="lightboxImage" class="modal-content">
-  </div>
-
   <script>
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -289,51 +189,6 @@
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       });
-    });
-
-    // Lightbox functionality
-    const galleryImages = document.querySelectorAll('.gallery-img');
-    const lightboxModal = document.getElementById('lightboxModal');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const modalClose = document.querySelector('.modal-close');
-
-    galleryImages.forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxModal.style.display = 'block';
-        lightboxImage.src = img.src;
-      });
-    });
-
-    modalClose.addEventListener('click', () => {
-      lightboxModal.style.display = 'none';
-    });
-
-    window.addEventListener('click', (e) => {
-      if (e.target === lightboxModal) {
-        lightboxModal.style.display = 'none';
-      }
-    });
-
-    // Add scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('.photo-card').forEach((card, index) => {
-      card.style.opacity = '0';
-      card.style.transform = 'translateY(20px)';
-      card.style.transition = `all 0.6s ease ${index * 0.1}s`;
-      observer.observe(card);
     });
   </script>
 </body>

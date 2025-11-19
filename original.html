@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sonali Nathwani</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .fade-in {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-up {
+      animation: slideUp 1s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .text-gradient {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .photo-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+      padding: 2rem 1.5rem 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .photo-card:hover .photo-caption {
+      transform: translateY(0);
+    }
+
+    .section-divider {
+      height: 2px;
+      background: linear-gradient(to right, transparent, #667eea, transparent);
+      margin: 4rem 0;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 50;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+
+    .modal-content {
+      margin: 5% auto;
+      display: block;
+      max-width: 90%;
+      max-height: 85vh;
+      object-fit: contain;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .modal-close:hover {
+      color: #667eea;
+    }
+
+    @media (max-width: 768px) {
+      .photo-card img {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Hero Section -->
+  <section class="hero-gradient min-h-screen flex items-center justify-center px-4 py-20">
+    <div class="text-center fade-in">
+      <div class="mb-6">
+        <p class="text-white/90 text-lg md:text-xl font-light tracking-widest uppercase mb-4">Introducing</p>
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4">Sonali Nathwani</h1>
+        <div class="w-24 h-1 bg-white/50 mx-auto mb-8"></div>
+      </div>
+      <p class="text-white/90 text-xl md:text-2xl font-light max-w-3xl mx-auto leading-relaxed">
+        A celebration of magic, moments, and memories
+      </p>
+      <div class="mt-12">
+        <a href="#video" class="inline-block bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:bg-purple-50 transition-all transform hover:scale-105 shadow-lg">
+          Discover More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section id="video" class="py-20 px-4 bg-white">
+    <div class="container mx-auto max-w-6xl slide-up">
+      <div class="text-center mb-12">
+        <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4">A Special Moment</h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+          Watch this special tribute celebrating everything that makes Sonali extraordinary
+        </p>
+      </div>
+
+      <div class="video-container">
+        <video controls class="w-full" poster="">
+          <source src="finalVideo.mov" type="video/mp4">
+          <source src="finalVideo.mov" type="video/quicktime">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Photo Gallery Section -->
+  <section id="gallery" class="py-20 px-4 bg-gradient-to-b from-white to-gray-50">
+    <div class="container mx-auto max-w-7xl">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-gradient mb-4">Captured Memories</h2>
+        <p class="text-gray-600 text-lg max-w-2xl mx-auto">
+          A collection of beautiful moments that tell a story
+        </p>
+      </div>
+
+      <div class="photo-grid">
+        <!-- Photo 1 -->
+        <div class="photo-card">
+          <img src="photos/IMG_1232.jpg" alt="Memory 1" class="gallery-img cursor-pointer">
+          <div class="photo-caption">
+            <p class="text-sm font-medium">A perfect moment captured in time</p>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="photo-card">
+          <img src="photos/IMG_0566.jpg" alt="Memory 2" class="gallery-img cursor-pointer">
+          <div class="photo-caption">
+            <p class="text-sm font-medium">Radiance and grace</p>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="photo-card">
+          <img src="photos/C869443D-5D3E-4969-873E-B0FAFD1E6167.JPG" alt="Memory 3" class="gallery-img cursor-pointer">
+          <div class="photo-caption">
+            <p class="text-sm font-medium">Pure joy</p>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="photo-card">
+          <img src="photos/IMG_4225.JPG" alt="Memory 4" class="gallery-img cursor-pointer">
+          <div class="photo-caption">
+            <p class="text-sm font-medium">The moment I knew I was moving to Austin</p>
+          </div>
+        </div>
+
+        <!-- Photo 5 -->
+        <div class="photo-card">
+          <img src="photos/IMG_1543.jpg" alt="Memory 5" class="gallery-img cursor-pointer">
+          <div class="photo-caption">
+            <p class="text-sm font-medium">Our first Diwali celebration together</p>
+          </div>
+        </div>
+
+        <!-- Photo 6 -->
+        <div class="photo-card">
+          <img src="photos/IMG_3070.JPG" alt="Memory 6" class="gallery-img cursor-pointer">
+          <div class="photo-caption">
+            <p class="text-sm font-medium">Coachella - officially together</p>
+          </div>
+        </div>
+
+        <!-- Photo 7 -->
+        <div class="photo-card">
+          <img src="photos/IMG_3784.JPG" alt="Memory 7" class="gallery-img cursor-pointer">
+          <div class="photo-caption">
+            <p class="text-sm font-medium">Your smile lights up my world</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="hero-gradient py-12 px-4">
+    <div class="container mx-auto text-center">
+      <p class="text-white/90 text-lg font-light">
+        To a lifetime of magic ✨
+      </p>
+      <p class="text-white/70 text-sm mt-4">
+        Forever yours, Dhruv ❤️
+      </p>
+    </div>
+  </footer>
+
+  <!-- Lightbox Modal -->
+  <div id="lightboxModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img id="lightboxImage" class="modal-content">
+  </div>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // Lightbox functionality
+    const galleryImages = document.querySelectorAll('.gallery-img');
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const modalClose = document.querySelector('.modal-close');
+
+    galleryImages.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxModal.style.display = 'block';
+        lightboxImage.src = img.src;
+      });
+    });
+
+    modalClose.addEventListener('click', () => {
+      lightboxModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) {
+        lightboxModal.style.display = 'none';
+      }
+    });
+
+    // Add scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.photo-card').forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = `all 0.6s ease ${index * 0.1}s`;
+      observer.observe(card);
+    });
+  </script>
+</body>
+</html>

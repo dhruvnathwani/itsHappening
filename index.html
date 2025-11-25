@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sonali Nathwani</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Congratulations Sonali!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -23,50 +27,143 @@
       font-family: 'Playfair Display', serif;
     }
 
+    .script-font {
+      font-family: 'Great Vibes', cursive;
+    }
+
+    /* Floating Hearts Animation */
+    .hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      animation: floatUp 8s ease-in infinite;
+      opacity: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-20vh) rotate(720deg) scale(1.2);
+      }
+    }
+
+    /* Sparkle Animation */
+    .sparkles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #ffd700 0%, transparent 70%);
+      border-radius: 50%;
+      animation: sparkle 3s ease-in-out infinite;
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        opacity: 0;
+        transform: scale(0);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Hero Section with Video */
     .cinematic-container {
       position: relative;
       width: 100vw;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       background: radial-gradient(ellipse at center, #1a1a2e 0%, #000000 100%);
+      padding: 2rem;
     }
 
     .title-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      padding: 3rem 2rem;
       text-align: center;
       z-index: 10;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+      margin-bottom: 2rem;
       opacity: 0;
       animation: fadeIn 1.5s ease-in-out 0.5s forwards;
     }
 
     .subtitle {
-      font-size: 0.875rem;
-      letter-spacing: 3px;
+      font-size: 1rem;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.6);
-      margin-bottom: 1rem;
+      color: rgba(255, 215, 0, 0.8);
+      margin-bottom: 0.5rem;
       font-weight: 300;
     }
 
-    h1 {
-      font-size: clamp(2.5rem, 8vw, 5rem);
+    .main-title {
+      font-size: clamp(3rem, 10vw, 7rem);
       font-weight: 400;
       letter-spacing: 2px;
       color: #fff;
       margin: 0;
+      text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+    }
+
+    .engagement-badge {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 2rem;
+      background: linear-gradient(135deg, #d4af37, #f4e4bc, #d4af37);
+      color: #1a1a2e;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      border-radius: 50px;
+      animation: shimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% {
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
+      }
     }
 
     .video-wrapper {
       position: relative;
       width: 90vw;
-      max-width: 1400px;
+      max-width: 1000px;
       aspect-ratio: 16/9;
       opacity: 0;
       transform: scale(0.95);
@@ -74,11 +171,12 @@
       box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.1),
         0 10px 40px rgba(0, 0, 0, 0.5),
-        0 30px 90px rgba(0, 0, 0, 0.9);
+        0 30px 90px rgba(0, 0, 0, 0.9),
+        0 0 100px rgba(212, 175, 55, 0.2);
       border-radius: 12px;
       overflow: hidden;
       background: #000;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border: 2px solid rgba(212, 175, 55, 0.3);
     }
 
     .video-wrapper::before {
@@ -88,10 +186,10 @@
       left: -2px;
       right: -2px;
       bottom: -2px;
-      background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      background: linear-gradient(45deg, rgba(212, 175, 55, 0.3), rgba(255, 255, 255, 0.1));
       border-radius: 13px;
       z-index: -1;
-      opacity: 0.3;
+      opacity: 0.5;
     }
 
     iframe {
@@ -103,33 +201,226 @@
       border: none;
     }
 
-    .bottom-overlay {
+    .scroll-indicator {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 2rem;
-      text-align: center;
-      z-index: 10;
-      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%);
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
       opacity: 0;
-      animation: fadeIn 1.5s ease-in-out 1.5s forwards;
+      animation: fadeIn 1s ease-in-out 2s forwards, bounce 2s ease-in-out infinite 2s;
+      cursor: pointer;
+      z-index: 10;
     }
 
-    .credits {
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      color: rgba(255, 255, 255, 0.5);
+    .scroll-indicator span {
+      display: block;
+      width: 30px;
+      height: 50px;
+      border: 2px solid rgba(255, 215, 0, 0.5);
+      border-radius: 25px;
+      position: relative;
+    }
+
+    .scroll-indicator span::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      background: #d4af37;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      animation: scrollDot 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollDot {
+      0% { top: 10px; opacity: 1; }
+      100% { top: 30px; opacity: 0; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* Message Section */
+    .message-section {
+      position: relative;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, #000 0%, #1a1a2e 50%, #000 100%);
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .message-content {
+      max-width: 800px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease-out;
+    }
+
+    .message-content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .ring-icon {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .message-title {
+      font-size: clamp(2rem, 6vw, 4rem);
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #fff 0%, #d4af37 50%, #fff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .message-text {
+      font-size: 1.2rem;
+      line-height: 2;
+      color: rgba(255, 255, 255, 0.8);
       font-weight: 300;
     }
 
+    .message-text .highlight {
+      color: #d4af37;
+      font-weight: 500;
+    }
+
+    /* Photo Gallery Section */
+    .gallery-section {
+      position: relative;
+      padding: 4rem 2rem;
+      background: #000;
+    }
+
+    .gallery-title {
+      text-align: center;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease-out;
+    }
+
+    .gallery-title.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-title h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: #d4af37;
+      margin-bottom: 0.5rem;
+    }
+
+    .gallery-title p {
+      color: rgba(255, 255, 255, 0.6);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.875rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      border-radius: 12px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease-out;
+      cursor: pointer;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .gallery-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 60px rgba(212, 175, 55, 0.3);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(180deg, #000 0%, #1a1a2e 100%);
+    }
+
+    .footer-message {
+      font-size: clamp(2rem, 5vw, 4rem);
+      margin-bottom: 1rem;
+      color: #d4af37;
+    }
+
+    .footer-names {
+      font-size: 1.5rem;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 4px;
+      margin-bottom: 2rem;
+    }
+
+    .footer-hearts {
+      font-size: 2rem;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .footer-date {
+      margin-top: 2rem;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 2px;
+    }
+
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @keyframes videoAppear {
@@ -145,7 +436,7 @@
 
     @media (max-width: 768px) {
       .title-overlay {
-        padding: 2rem 1rem;
+        padding: 1rem;
       }
 
       .subtitle {
@@ -153,47 +444,46 @@
         letter-spacing: 2px;
       }
 
-      h1 {
-        letter-spacing: 1px;
+      .engagement-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 1.5rem;
       }
 
       .video-wrapper {
         width: 95vw;
       }
 
-      .bottom-overlay {
-        padding: 1.5rem 1rem;
+      .message-text {
+        font-size: 1rem;
       }
 
-      .credits {
-        font-size: 0.7rem;
-        letter-spacing: 1.5px;
-      }
-    }
-
-    @media (max-height: 600px) {
-      .title-overlay {
-        padding: 1.5rem 1rem;
-      }
-
-      .bottom-overlay {
-        padding: 1rem;
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Floating Hearts -->
+  <div class="hearts-container" id="hearts"></div>
+
+  <!-- Sparkles -->
+  <div class="sparkles" id="sparkles"></div>
+
+  <!-- Hero Section -->
   <div class="cinematic-container">
     <div class="title-overlay">
-      <div class="subtitle"></div>
-      <h1></h1>
+      <div class="subtitle">She Said Yes!</div>
+      <h1 class="main-title">Here's to a lifetime together</h1>
+      <div class="engagement-badge">Engaged</div>
     </div>
 
     <div class="video-wrapper">
       <iframe
         src="https://www.youtube.com/embed/6Eit38joujE?rel=0&modestbranding=1"
-        title="finalVideo"
+        title="Engagement Video"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerpolicy="strict-origin-when-cross-origin"
@@ -201,10 +491,106 @@
       </iframe>
     </div>
 
-    <div class="bottom-overlay">
-      <div class="credits"></div>
-    </div>
+    <a href="#message" class="scroll-indicator">
+      <span></span>
+    </a>
   </div>
+
+  <!-- Message Section -->
+  <section class="message-section" id="message">
+    <div class="message-content">
+      <div class="ring-icon">💍</div>
+      <h2 class="message-title script-font">To my soulmate</h2>
+      <p class="message-text">
+        I'm so lucky to have found my person, and even luckier that <span class="highlight">my person is you</span>.
+        <br><br>
+        Here's to our next chapter fillded with love, laughter, dancing, and adventures.
+        <br><br>
+        Here's to a lifetime of <span class="highlight">happily ever after</span>!
+      </p>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="gallery-section" id="gallery">
+    <div class="gallery-title">
+      <h2 class="script-font">My Future Wife</h2>
+      <p>She is beauty, she is grace</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="photos/DSCF0002.jpg" alt="Engagement Photo 1">
+      </div>
+      <div class="gallery-item">
+        <img src="photos/IMG_5919.JPG" alt="Engagement Photo 2">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-message script-font">Cheers</div>
+    <div class="footer-names">SONALI + DHRUV</div>
+    <div class="footer-hearts">💕</div>
+    <div class="footer-date">2025</div>
+  </footer>
+
+  <script>
+    // Create floating hearts
+    function createHeart() {
+      const heartsContainer = document.getElementById('hearts');
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = ['💖', '💗', '💕', '💛', '✨', '💫'][Math.floor(Math.random() * 6)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 4 + 6) + 's';
+      heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+      heartsContainer.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 10000);
+    }
+
+    // Create sparkles
+    function createSparkle() {
+      const sparklesContainer = document.getElementById('sparkles');
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.animationDelay = Math.random() * 2 + 's';
+      sparklesContainer.appendChild(sparkle);
+
+      setTimeout(() => sparkle.remove(), 5000);
+    }
+
+    // Start animations
+    setInterval(createHeart, 800);
+    setInterval(createSparkle, 500);
+
+    // Create initial sparkles
+    for (let i = 0; i < 20; i++) {
+      setTimeout(createSparkle, i * 100);
+    }
+
+    // Scroll reveal animation
+    const observerOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements
+    document.querySelectorAll('.message-content, .gallery-title, .gallery-item').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
 
 </body>
 </html>
